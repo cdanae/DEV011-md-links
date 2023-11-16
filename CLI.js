@@ -1,12 +1,12 @@
-const mdLinks = require('./index');  
+const mdLinks = require('./index');
 
 // Prueba con una ruta válida
-mdLinks.mdLinks('./prueba-archivo.md')
-  .then(() => {
+mdLinks.mdLinks('./testFiles/prueba-archivo.md')
+  .then((response) => {
     // => [{ href, text, file }, ...]
-    console.log('La ruta existe');
+    console.log('respuesta',response);
   })
-  .catch(() => {
-    console.log('La ruta NO existe');
+  .catch((error) => {
+    console.log('holis',error);
   });
 
