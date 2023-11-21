@@ -1,11 +1,12 @@
 const mdLinks = require('./index');
 
-const testNoLinks = './testFiles/archivo-noLinks.md'
-const test2Links = './testFiles/archivo-2links.md'
-const testReadme = './README.md'
-const testTxt = './testFiles/prueba-txt.txt'
+const docNoLinks = './testFiles/archivo-noLinks.md'
+const doc2Links = './testFiles/archivo-2links.md'
+const docReadme = './README.md'
+const docTxt = './testFiles/prueba-txt.txt'
+const docNonExistent = './RDME.md'
 
-mdLinks.mdLinks(testNoLinks)
+mdLinks.mdLinks(doc2Links)
   .then((response) => {
     console.log(response);
   })
