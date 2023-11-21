@@ -13,16 +13,16 @@ module.exports = {
   checkMdExtension: (absolutePath) => {
     const mdExtensions = ['.md', '.mkd', '.mdwn', '.mdown', '.mdtxt', '.mdtext', '.markdown', '.text']
     const extension = path.extname(absolutePath).toLowerCase()
-    
+
     return mdExtensions.includes(extension)
   },
   readDocContent: (absolutePath) => {
     return new Promise((resolve, reject) => {
       fs.readFile(absolutePath, 'utf-8', (err, data) => {
         if (err) {
-          reject(err)       
+          reject(err)
         }
-        resolve(data)  
+        resolve(data)
       })
     })
   },
@@ -34,13 +34,18 @@ module.exports = {
   },
   extractLinks: (links, absolutePath) => {
     const fileName = path.basename(absolutePath)
-   const foundLinks = links.map((link) => {
-    return {
-      href: link.href,
-      text: link.textContent,
-      file: fileName,
+    if (links.length === 0) {
+      return 'No se encontraron archivos en: ' + fileName
+    } else {
+      const foundLinks = links.map((link) => {
+        return {
+          href: link.href,
+          text: link.textContent,
+          file: fileName,
+        }
+      });
+      return foundLinks
     }
-    });
-    return foundLinks
+    
   }
 }

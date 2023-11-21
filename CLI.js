@@ -5,7 +5,7 @@ const test2Links = './testFiles/archivo-2links.md'
 const testReadme = './README.md'
 const testTxt = './testFiles/prueba-txt.txt'
 
-mdLinks.mdLinks(test2Links)
+mdLinks.mdLinks(testNoLinks)
   .then((response) => {
     console.log(response);
   })
