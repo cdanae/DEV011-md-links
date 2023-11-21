@@ -1,12 +1,14 @@
 const mdLinks = require('./index');
 
-// Prueba con una ruta válida
-mdLinks.mdLinks('./testFiles/prueba-archivo.md')
+const testNoLinks = './testFiles/archivo-noLinks.md'
+const test2Links = './testFiles/archivo-2links.md'
+const testReadme = './README.md'
+const testTxt = './testFiles/prueba-txt.txt'
+
+mdLinks.mdLinks(test2Links)
   .then((response) => {
-    // => [{ href, text, file }, ...]
-    console.log('respuesta',response);
+    console.log(response);
   })
   .catch((error) => {
-    console.log('holis',error);
+    console.log(error);
   });
-

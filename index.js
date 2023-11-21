@@ -21,7 +21,9 @@ module.exports = {
         default:
           readDoc
             .then((data) => {
-              resolve(data);
+              const links = functions.findLinks(data)
+              const extractLinks = functions.extractLinks(links, absolutePath)
+              resolve(extractLinks);
             })
             .catch((err) => {
               reject(err)

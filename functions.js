@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs');
+const marked = require('marked');
+const { JSDOM } = require('jsdom');
 
 module.exports = {
   convertToAbsolutePath: (docPath) => {
@@ -23,6 +25,22 @@ module.exports = {
         resolve(data)  
       })
     })
-
+  },
+  findLinks: (data) => {
+    const html = marked.parse(data);
+    const dom = new JSDOM(html).window.document
+    const links = Array.from(dom.querySelectorAll('a'))
+    return links;
+  },
+  extractLinks: (links, absolutePath) => {
+    const fileName = path.basename(absolutePath)
+   const foundLinks = links.map((link) => {
+    return {
+      href: link.href,
+      text: link.textContent,
+      file: fileName,
+    }
+    });
+    return foundLinks
   }
 }
