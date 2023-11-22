@@ -1,4 +1,4 @@
-const mdLinks = require('./index');
+const mdLinks = require('./md-links');
 
 const docNoLinks = './testFiles/archivo-noLinks.md'
 const doc2Links = './testFiles/archivo-2links.md'
