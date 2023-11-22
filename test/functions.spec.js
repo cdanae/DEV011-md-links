@@ -82,8 +82,9 @@ describe('extractLinks', () => {
       },
     ]
     const res = extractLinks(links, absolutePath);
+    console.log(res);
     expect(res[0]).toHaveProperty('href', 'https://es.wikipedia.org/wiki/Markdown');
-    // expect(res[0]).toHaveProperty('text', 'Markdown');
+    expect(res[0]).toHaveProperty('text', 'Markdown');
     expect(res[0]).toHaveProperty('file', 'archivo-2links.md');
   })
 })

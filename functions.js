@@ -40,12 +40,11 @@ module.exports = {
       const foundLinks = links.map((link) => {
         return {
           href: link.href,
-          text: link.textContent,
+          text: link.text,
           file: fileName,
         }
       });
       return foundLinks
-    }
-    
+    }    
   }
 }
