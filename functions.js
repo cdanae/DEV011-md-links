@@ -46,10 +46,25 @@ module.exports = {
         }
       });
       return foundLinks
-    }    
+    }
   },
-  validateLinks: (links) => {
-    console.log('entra a validate');
-  },
+  validateLinks: (extractedLinks) => {
+    return Promise.all(extractedLinks.map((objLink) => {
+      const url = objLink.href;
+      return axios.get(url)
+        .then((response) => {
+          objLink.status = response.status;
+          objLink.ok = response.statusText;
+          return objLink;
+        })
+        .catch((error) => {
+          objLink.status = error.response.status;
+          objLink.ok = 'FAIL';
+          //console.log('respuestaError', error.response.status, error.response.statusText);
+          return objLink;
+        })
 
+    }))
+
+  },
 }

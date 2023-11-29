@@ -1,5 +1,5 @@
 const { default: axios } = require('axios');
-const { convertToAbsolutePath, checkDocExistence, checkMdExtension, readDocContent, findLinks, extractLinks } = require('./functions')
+const { convertToAbsolutePath, checkDocExistence, checkMdExtension, readDocContent, findLinks, extractLinks, validateLinks } = require('./functions')
 
 
 module.exports = {
@@ -23,34 +23,18 @@ module.exports = {
         default:
           readDoc
             .then((data) => {
-              const links = findLinks(data)
-              const extractLinksArray = extractLinks(links, absolutePath)
+              const foundLinks = findLinks(data)
+              const extractedLinks = extractLinks(foundLinks, absolutePath)
               if (validate) {
-                const array = extractLinksArray.map((objLinks) => {
-                  const url = objLinks.href;
-                  return axios.get(url)
-                    .then((response) => {
-                      objLinks.status = response.status;
-                      objLinks.ok = response.statusText;
-                      return objLinks
-                    })
-                    .catch((error) => {
-                      objLinks.status = error.response.status;
-                      objLinks.ok = 'FAIL';
-                      //console.log('respuestaError', error.response.status, error.response.statusText);
-                      return objLinks
-                    })
-
-                })
-                Promise.all(array)
-                  .then((validateLinks) => {
-                    resolve(validateLinks)
+                validateLinks(extractedLinks)
+                  .then((validatedLinks) => {
+                    resolve(validatedLinks)
                   })
                   .catch(() => {
                     reject(new Error('El dominio no existe'))
                   })
               } else {
-                resolve(extractLinksArray);
+                resolve(extractedLinks);
               }
 
             })

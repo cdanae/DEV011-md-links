@@ -7,16 +7,10 @@ const docTxt = './testFiles/prueba-txt.txt'
 const docNonExistent = './RDME.md'
 const doc2Links1LinkError = './testFiles/archivo-2links1error.md'
 
- //mdLinks(doc2Links1LinkError, true)
-  /* .then((response) => {
+mdLinks(doc2Links1LinkError, true)
+  .then((response) => {
     console.log(response);
   })
   .catch((error) => {
     console.log(error);
-  }); */
-const test = async () => {
-  const res = await mdLinks(doc2Links1LinkError, true)
-  console.log("RES",res)
-}
-
-test()
+  });
