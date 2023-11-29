@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
 const { JSDOM } = require('jsdom');
+const axios = require('axios').default;
 
 module.exports = {
   convertToAbsolutePath: (docPath) => {
@@ -46,5 +47,9 @@ module.exports = {
       });
       return foundLinks
     }    
-  }
+  },
+  validateLinks: (links) => {
+    console.log('entra a validate');
+  },
+
 }
