@@ -6,6 +6,8 @@ const axios = require('axios').default;
 
 module.exports = {
   convertToAbsolutePath: (docPath) => {
+    console.log( path.resolve(docPath))
+
     return path.resolve(docPath)
   },
   checkDocExistence: (absolutePath) => {
@@ -67,4 +69,5 @@ module.exports = {
     }))
 
   },
+  
 }

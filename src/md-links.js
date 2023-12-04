@@ -25,7 +25,8 @@ module.exports = {
             .then((data) => {
               const foundLinks = findLinks(data)
               const extractedLinks = extractLinks(foundLinks, absolutePath)
-              if (validate) {
+              if (validate.validateOption === true) {
+                console.log('que eres: true', validate);
                 validateLinks(extractedLinks)
                   .then((validatedLinks) => {
                     resolve(validatedLinks)
@@ -34,6 +35,8 @@ module.exports = {
                     reject(new Error('El dominio no existe'))
                   })
               } else {
+                console.log('que eres: false?', validate);
+
                 resolve(extractedLinks);
               }
 
