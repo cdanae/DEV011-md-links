@@ -11,15 +11,17 @@ const docNonExistent = 'RDME.md'
 const doc2Links1LinkError = 'testFiles/archivo-2links1error.md'
 
 const filePath = process.argv[2]
-function validacion() {
-  return process.argv.includes('--validate')
-}
 const options = {
-  validateOption: validacion(),
+  validateOption: process.argv.includes('--validate'),
+  statsOption: process.argv.includes('--stats'),
 };
+
 if (process.argv[3] === '--validate') {
   process.argv[3] = true;
-} else {
+} else if (process.argv[3] === '--stats') {
+  process.argv[3] = true;
+}
+else {
   process.argv[3] = false;
 
 }

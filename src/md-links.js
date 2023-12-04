@@ -1,9 +1,8 @@
-const { default: axios } = require('axios');
-const { convertToAbsolutePath, checkDocExistence, checkMdExtension, readDocContent, findLinks, extractLinks, validateLinks } = require('./functions')
+const { convertToAbsolutePath, checkDocExistence, checkMdExtension, readDocContent, findLinks, extractLinks, validateLinks, statsLinks } = require('./functions')
 
 
 module.exports = {
-  mdLinks: (docPath, validate) => {
+  mdLinks: (docPath, options) => {
 
     const absolutePath = convertToAbsolutePath(docPath)
     const docExist = checkDocExistence(absolutePath)
@@ -25,18 +24,19 @@ module.exports = {
             .then((data) => {
               const foundLinks = findLinks(data)
               const extractedLinks = extractLinks(foundLinks, absolutePath)
-              if (validate.validateOption === true) {
-                console.log('que eres: true', validate);
+              if (options.validateOption) {
                 validateLinks(extractedLinks)
                   .then((validatedLinks) => {
                     resolve(validatedLinks)
                   })
                   .catch(() => {
-                    reject(new Error('El dominio no existe'))
+                    reject(new Error('No hay red o el dominio no existe'))
                   })
-              } else {
-                console.log('que eres: false?', validate);
-
+              } else if(options.statsOption) {
+                const resultStats = statsLinks(extractedLinks)
+                resolve(resultStats)
+              }
+              else {
                 resolve(extractedLinks);
               }
 

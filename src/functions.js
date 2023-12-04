@@ -6,8 +6,6 @@ const axios = require('axios').default;
 
 module.exports = {
   convertToAbsolutePath: (docPath) => {
-    console.log( path.resolve(docPath))
-
     return path.resolve(docPath)
   },
   checkDocExistence: (absolutePath) => {
@@ -69,5 +67,28 @@ module.exports = {
     }))
 
   },
+  statsLinks: (extractedLinks) => {
+    console.log(extractedLinks);
+    const totalLinks = extractedLinks.length
+    const uniqueLinks = extractedLinks.reduce((counter, objLink) => {
+      if(objLink.href) {
+        counter++
+      }
+      return counter
+    }, 0)
+    //const brokenLinks = extractedLinks.filter(link => link.status !== 200)
+/*     extractedLinks.forEach(link => {
+      if (link.status === 200) {
+        uniqueLinks.add(link.href)
+      }
+    }) */
+
+    const stats = {
+      Total: totalLinks,
+      Unique: uniqueLinks,
+      //Broken: brokenLinks.length
+    }
+    return stats
+  }
   
 }
