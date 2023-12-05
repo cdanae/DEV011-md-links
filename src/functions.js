@@ -60,7 +60,6 @@ module.exports = {
         .catch((error) => {
           objLink.status = error.response.status;
           objLink.ok = 'FAIL';
-          //console.log('respuestaError', error.response.status, error.response.statusText);
           return objLink;
         })
 
@@ -68,7 +67,6 @@ module.exports = {
 
   },
   statsLinks: (extractedLinks) => {
-    console.log(extractedLinks);
     const totalLinks = extractedLinks.length
     const uniqueLinks = extractedLinks.reduce((counter, objLink) => {
       if(objLink.href) {
@@ -76,17 +74,21 @@ module.exports = {
       }
       return counter
     }, 0)
-    //const brokenLinks = extractedLinks.filter(link => link.status !== 200)
-/*     extractedLinks.forEach(link => {
-      if (link.status === 200) {
-        uniqueLinks.add(link.href)
-      }
-    }) */
-
     const stats = {
       Total: totalLinks,
       Unique: uniqueLinks,
-      //Broken: brokenLinks.length
+    }
+    return stats
+  },
+  validateStatsLinks: (extractedLinks) => {
+    const totalLinks = extractedLinks.length;
+    const uniqueLinks = extractedLinks.filter(link => link.status >= 200 && link.status < 300)
+    const brokenLinks = extractedLinks.filter(link => link.status !== 200);
+console.log(uniqueLinks);
+    const stats = {
+      Total: totalLinks,
+      Unique: uniqueLinks.length,
+      Broken: brokenLinks.length
     }
     return stats
   }

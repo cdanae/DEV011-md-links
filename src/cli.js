@@ -16,15 +16,6 @@ const options = {
   statsOption: process.argv.includes('--stats'),
 };
 
-if (process.argv[3] === '--validate') {
-  process.argv[3] = true;
-} else if (process.argv[3] === '--stats') {
-  process.argv[3] = true;
-}
-else {
-  process.argv[3] = false;
-
-}
 console.log(process.argv);
 
 
