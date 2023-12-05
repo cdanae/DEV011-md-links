@@ -1,4 +1,4 @@
-const { mdLinks } = require('../md-links')
+const { mdLinks } = require('../src/md-links')
 
 const relativePath = '/testFiles/archivo-2links.md'
 const absolutePath = '/Users/carolinarodriguez/Desktop/Laboratoria/DEV011-md-links/testFiles/archivo-2links.md'

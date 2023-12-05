@@ -66,31 +66,17 @@ module.exports = {
     }))
 
   },
-  statsLinks: (extractedLinks) => {
+  statsLinks: (extractedLinks, valStatsLinks) => {
     const totalLinks = extractedLinks.length
-    const uniqueLinks = extractedLinks.reduce((counter, objLink) => {
-      if(objLink.href) {
-        counter++
-      }
-      return counter
-    }, 0)
+    const uniqueLinks = new Set(extractedLinks.map(link => link.href))
     const stats = {
       Total: totalLinks,
-      Unique: uniqueLinks,
+      Unique: uniqueLinks.size,
+    }
+    if (valStatsLinks) {
+      const brokenLinks = extractedLinks.filter(link => link.status !== 200);
+      stats.Broken = brokenLinks.length
     }
     return stats
   },
-  validateStatsLinks: (extractedLinks) => {
-    const totalLinks = extractedLinks.length;
-    const uniqueLinks = extractedLinks.filter(link => link.status >= 200 && link.status < 300)
-    const brokenLinks = extractedLinks.filter(link => link.status !== 200);
-console.log(uniqueLinks);
-    const stats = {
-      Total: totalLinks,
-      Unique: uniqueLinks.length,
-      Broken: brokenLinks.length
-    }
-    return stats
-  }
-  
 }

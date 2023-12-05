@@ -1,4 +1,4 @@
-const { convertToAbsolutePath, checkDocExistence, checkMdExtension, readDocContent, findLinks, extractLinks } = require('../functions')
+const { convertToAbsolutePath, checkDocExistence, checkMdExtension, readDocContent, findLinks, extractLinks } = require('../src/functions')
 const path = require('path')
 
 const relativePath = './testFiles/archivo-2links.md'

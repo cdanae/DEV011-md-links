@@ -16,4 +16,6 @@ herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos
 en formato `Markdown`, para verificar los links que contengan y reportar
 algunas estadísticas.
 
+[Markdown](https://es.wikipedia.org/wiki/Markdown)
+
 ![md-links](https://github.com/Laboratoria/curriculum/assets/12631491/fc6bc380-7824-4fab-ab8f-7ab53cd9d0e4)
