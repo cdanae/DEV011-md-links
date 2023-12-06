@@ -36,15 +36,15 @@ module.exports = {
   extractLinks: (links, absolutePath) => {
     const fileName = path.basename(absolutePath)
     if (links.length === 0) {
-      return 'No se encontraron archivos en: ' + fileName
+      return 'No se encontraron links en: ' + fileName
     } else {
-      const foundLinks = links.map((link) => {
-        return {
-          href: link.href,
-          text: link.text,
-          file: fileName,
-        }
-      });
+      const filterLinks = links.filter(link => link.href.includes('https://') || link.href.includes('http://'))
+      const foundLinks = filterLinks.map((link) => ({
+        href: link.href,
+        text: link.text,
+        file: fileName,
+      }))
+
       return foundLinks
     }
   },
