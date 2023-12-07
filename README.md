@@ -20,25 +20,40 @@ muestra la sintaxis general para ejecutar md-links:
 
 * `<path-to-file>`: Ruta del archivo o directorio a analizar.
 * `[options]`: Opciones que se pueden incluir para obtener resultados específicos:
-    * `--validate`: Realiza una validación de cada enlace encontrado.
-    * `--stats`: Muestra estadísticas básicas sobre los enlaces encontrados.
+    * `--validate`: Realiza una validación de cada enlace encontrado, verificando su estado 
+    y mostrando si es válido o no.
+    * `--stats`: Muestra estadísticas básicas sobre los enlaces encontrados, como el 
+    total de enlaces y los enlaces únicos.
+
 ### **Ejemplos de Uso:**
 **Ejemplo 1**: Analizar un archivo Markdown sin validación de enlaces:
 
-`md-links testFiles/archivo-2links.md`
+`md-links archivo.md`
+
+Este comando analizará el archivo archivo.md en busca de enlaces y mostrará información 
+detallada sobre cada enlace encontrado, incluyendo la URL y el texto de anclaje.
 
 **Ejemplo 2**: Analizar un archivo Markdown con validación de enlaces:
 
-`md-links testFiles/archivo-2links.md --validate`
+`md-links archivo.md --validate`
+
+Al agregar la opción --validate, md-links realizará una validación de cada enlace encontrado. 
+Mostrará información adicional sobre cada enlace, incluyendo el estado de validez, indicando 
+si el enlace es válido o no.
 
 **Ejemplo 3**: Mostrar estadísticas de los enlaces encontrados en un archivo Markdown:
 
-`md-links testFiles/archivo-2links.md --stats`
+`md-links archivo.md --stats`
+
+La opción --stats generará estadísticas básicas sobre los enlaces encontrados en el archivo 
+archivo.md. Mostrará el total de enlaces y los enlaces únicos.
 
 **Ejemplo 4**: Combinar opciones para validar y mostrar estadísticas de los enlaces:
 
-`md-links testFiles/archivo-2links.md --validate --stats`
+`md-links archivo.md --validate --stats`
 
+Al combinar las opciones --validate y --stats, md-links realizará una validación de los enlaces
+ y, además, proporcionará estadísticas sobre los enlaces encontrados en el archivo archivo.md.
 
 ## 2. Estructura
 
