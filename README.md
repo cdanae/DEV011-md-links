@@ -24,12 +24,16 @@ muestra la sintaxis general para ejecutar md-links:
     * `--stats`: Muestra estadísticas básicas sobre los enlaces encontrados.
 ### **Ejemplos de Uso:**
 **Ejemplo 1**: Analizar un archivo Markdown sin validación de enlaces:
+
 `md-links testFiles/archivo-2links.md`
 **Ejemplo 2**: Analizar un archivo Markdown con validación de enlaces:
+
 `md-links testFiles/archivo-2links.md --validate`
 **Ejemplo 3**: Mostrar estadísticas de los enlaces encontrados en un archivo Markdown:
+
 `md-links testFiles/archivo-2links.md --stats`
 **Ejemplo 4**: Combinar opciones para validar y mostrar estadísticas de los enlaces:
+
 `md-links testFiles/archivo-2links.md --validate --stats`
 
 
