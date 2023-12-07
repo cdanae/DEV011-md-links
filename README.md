@@ -7,7 +7,6 @@
 * [3. Archivos principales](#3-archivos-principales)
 * [4. Pruebas](#4-pruebas)
 * [5. Dependencias](#5-dependencias)
-* [6. Comandos de prueba](#6-comandos-de-prueba)
 ***
 
 ## 1. Uso
@@ -94,12 +93,13 @@ DEV011-MD-LINKS/
 Se han incluido pruebas para garantizar la funcionalidad correcta de la herramienta. Están ubicadas 
 en la carpeta test y se utilizan para verificar las funciones implementadas en functions.js y md-links.js.
 
+Se usa Jest para ejecutar las pruebas y mostrará un informe de cobertura del código con el siguiente comando:
+`npm test`
+
 ## 5. Dependencias
 
 * **axios**: para realizar peticiones HTTP para validar enlaces.
 * **jsdom**: para manipulación del DOM para extraer enlaces de archivos Markdown.
 * **marked**: para analizar archivos Markdown y convertirlos a HTML.
 
-## 6. Comando de prueba
-Se usa Jest para ejecutar las pruebas y mostrará un informe de cobertura del código con el siguiente comando:
-`npm test`
+
